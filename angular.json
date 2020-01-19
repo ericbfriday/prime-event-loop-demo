@@ -22,7 +22,7 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -85,10 +85,14 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [
               "/node_modules/ace-builds/src-min/ace.js",
+              "/node_modules/ace-builds/src-min/mode-html.js",
+              "/node_modules/ace-builds/src-min/mode-javascript.js",
+              "/node_modules/ace-builds/src-min/mode-json.js",
+              "/node_modules/ace-builds/src-min/mode-typescript.js",
               "/node_modules/ace-builds/src-min/theme-monokai.js"
             ]
           }
@@ -122,5 +126,10 @@
   "defaultProject": "prime-event-loop-demo",
   "cli": {
     "defaultCollection": "@ngrx/schematics"
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
   }
 }
