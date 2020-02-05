@@ -6,11 +6,10 @@ export class Callstack<T> {
 	public push(...items: T[]): number {
 		return this._contents.push(...items);
 	}
-	public pop(): T {
+	public pop(): T | undefined {
 		return this._contents.pop();
 	}
 	public all(): T[] {
 		return this._contents;
 	}
-
 }

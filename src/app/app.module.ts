@@ -30,8 +30,6 @@ import * as fromWebApis from './portal/+state/web-apis/web-apis.reducer';
 import { WebApisEffects } from './portal/+state/web-apis/web-apis.effects';
 import * as fromCallbackQueue from './portal/+state/callback-queue/callback-queue.reducer';
 import { CallbackQueueEffects } from './portal/+state/callback-queue/callback-queue.effects';
-import * as fromCompiler from './compiler/+state/compiler.reducer';
-import { CompilerEffects } from './compiler/+state/compiler.effects';
 
 @NgModule({
   declarations: [
@@ -68,11 +66,10 @@ import { CompilerEffects } from './compiler/+state/compiler.effects';
     EffectsModule.forRoot([ AppEffects ]),
     BrowserAnimationsModule,
     StoreModule.forFeature(fromCodeEditor.codeEditorFeatureKey, fromCodeEditor.reducer),
-    EffectsModule.forFeature([ CodeEditorEffects, CallStackEffects, WebApisEffects, CallbackQueueEffects, CompilerEffects ]),
+    EffectsModule.forFeature([ CodeEditorEffects, CallStackEffects, WebApisEffects, CallbackQueueEffects ]),
     StoreModule.forFeature(fromCallStack.callStackFeatureKey, fromCallStack.reducer),
     StoreModule.forFeature(fromWebApis.webApisFeatureKey, fromWebApis.reducer),
-    StoreModule.forFeature(fromCallbackQueue.callbackQueueFeatureKey, fromCallbackQueue.reducer),
-    StoreModule.forFeature(fromCompiler.compilerFeatureKey, fromCompiler.reducer)
+    StoreModule.forFeature(fromCallbackQueue.callbackQueueFeatureKey, fromCallbackQueue.reducer)
   ],
   providers: [],
   bootstrap: [ AppComponent ]
