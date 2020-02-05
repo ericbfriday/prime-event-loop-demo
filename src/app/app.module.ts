@@ -22,6 +22,16 @@ import { CallbackQueueComponent } from "./portal/callback-queue/callback-queue.c
 import { ActivityDisplayComponent } from "./portal/activity-display/activity-display.component";
 import { PopupContainerComponent } from "./modal/popup-container/popup-container.component";
 import { AboutComponent } from "./modal/about/about.component";
+import * as fromCodeEditor from './editors/+state/code-editor.reducer';
+import { CodeEditorEffects } from './editors/+state/code-editor.effects';
+import * as fromCallStack from './portal/+state/call-stack/call-stack.reducer';
+import { CallStackEffects } from './portal/+state/call-stack/call-stack.effects';
+import * as fromWebApis from './portal/+state/web-apis/web-apis.reducer';
+import { WebApisEffects } from './portal/+state/web-apis/web-apis.effects';
+import * as fromCallbackQueue from './portal/+state/callback-queue/callback-queue.reducer';
+import { CallbackQueueEffects } from './portal/+state/callback-queue/callback-queue.effects';
+import * as fromCompiler from './compiler/+state/compiler.reducer';
+import { CompilerEffects } from './compiler/+state/compiler.effects';
 
 @NgModule({
   declarations: [
@@ -55,10 +65,16 @@ import { AboutComponent } from "./modal/about/about.component";
       maxAge: 25,
       logOnly: environment.production
     }),
-    EffectsModule.forRoot([AppEffects]),
-    BrowserAnimationsModule
+    EffectsModule.forRoot([ AppEffects ]),
+    BrowserAnimationsModule,
+    StoreModule.forFeature(fromCodeEditor.codeEditorFeatureKey, fromCodeEditor.reducer),
+    EffectsModule.forFeature([ CodeEditorEffects, CallStackEffects, WebApisEffects, CallbackQueueEffects, CompilerEffects ]),
+    StoreModule.forFeature(fromCallStack.callStackFeatureKey, fromCallStack.reducer),
+    StoreModule.forFeature(fromWebApis.webApisFeatureKey, fromWebApis.reducer),
+    StoreModule.forFeature(fromCallbackQueue.callbackQueueFeatureKey, fromCallbackQueue.reducer),
+    StoreModule.forFeature(fromCompiler.compilerFeatureKey, fromCompiler.reducer)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
-export class AppModule {}
+export class AppModule { }
