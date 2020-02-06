@@ -41,9 +41,9 @@ export class DisplayEditor implements OnInit {
     this.editor.setTheme(supportedThemes.monokai);
     this.editor.setMode(supportedModes.javascript);
 
-    this.editor.getEditor().setOptions({
-      enableBasicAutocompletion: true
-    });
+    // this.editor.getEditor().setOptions({
+    //   enableBasicAutocompletion: true
+    // });
 
     this.editor.getEditor().commands.addCommand({
       name: 'showOtherCompletions',

@@ -1,1 +1,29 @@
-<p>hypertext-editor works!</p>
+<p>Code snippets:</p>
+<pre>
+	var sampleArray = [1, 2, 3, 4, 5, 6, 7];
+
+	// synchronous
+	sampleArray.forEach(function (i) {{ '{' }}
+	  console.log(i);
+	});
+
+	// async
+	function asyncForEach(myArray) {{ '{' }}
+	  myArray.forEach(function (element) {{ '{' }}
+		setTimeout(function () {{ '{' }}
+		  console.log(element);
+		}, 0)
+	  });
+	}
+
+	asyncForEach(sampleArray);
+</pre>
+<pre>
+	console.log('Started script.');
+
+	setTimeout(()=>{{ '{' }}console.log('set timeout ran.')}, 1000);
+
+	Promise.resolve().then(()=>{{ '{' }} console.log('Promise 1 done.')}).then(()=>{{ '{' }} console.log('Promise 2 done.'); });
+
+	console.log('Finished Script.');
+</pre>

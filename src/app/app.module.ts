@@ -53,10 +53,10 @@ import { CallbackQueueEffects } from './portal/+state/callback-queue/callback-qu
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true,
-        strictStateSerializability: true,
-        strictActionSerializability: true
+        strictStateImmutability: false,
+        strictActionImmutability: false,
+        strictStateSerializability: false,
+        strictActionSerializability: false
       }
     }),
     StoreDevtoolsModule.instrument({

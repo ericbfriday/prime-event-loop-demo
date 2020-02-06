@@ -32,12 +32,13 @@ export class CodeEditorEffects {
       filter(data => !!data),
       flatMap((data: string) => {
         const program: Program = parseScript(data);
-        if (program && program.type === 'Program') {
+        if (!isNullOrUndefined(program.body)) {
+
+          return program.body.filter(block => block.type === 'ExpressionStatement');
         }
-        if (!isNullOrUndefined(program.body)) return program.body;
         throw new Error('Invalid tokens from parsing code editor input.');
       }),
-      map((statements) => CodeEditorActions.newStackOperation({ data: statements }))
+      map((statement) => CodeEditorActions.newStackOperation({ data: statement }))
     )
   })
 
