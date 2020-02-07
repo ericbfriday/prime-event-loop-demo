@@ -4,20 +4,17 @@ import {
   ChangeDetectionStrategy,
   ViewChild,
   Output,
-  EventEmitter,
-  ViewChildren,
-  QueryList
+  EventEmitter
 } from '@angular/core';
 import { AceEditorComponent } from 'ng2-ace-editor';
 import { supportedThemes, supportedModes } from './editor-mode.enum';
 
-import 'brace/theme/monokai';
-import 'brace/mode/html';
-import 'brace/mode/javascript';
-import 'brace/mode/json';
-import 'brace/mode/typescript';
+// import 'brace/theme/monokai';
+// import 'brace/mode/html';
+// import 'brace/mode/javascript';
+// import 'brace/mode/json';
+// import 'brace/mode/typescript';
 import { isNullOrUndefined } from 'src/app/utils/is-null-or-undefined';
-import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ace-editor',
@@ -41,9 +38,9 @@ export class DisplayEditor implements OnInit {
     this.editor.setTheme(supportedThemes.monokai);
     this.editor.setMode(supportedModes.javascript);
 
-    // this.editor.getEditor().setOptions({
-    //   enableBasicAutocompletion: true
-    // });
+    this.editor.getEditor().setOptions({
+      enableBasicAutocompletion: true
+    });
 
     this.editor.getEditor().commands.addCommand({
       name: 'showOtherCompletions',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType, CreateEffectMetadata } from '@ngrx/effects';
 import { catchError, map, concatMap } from 'rxjs/operators';
-import { EMPTY, of } from 'rxjs';
+import { EMPTY, of, Observable } from 'rxjs';
 
 import * as CallbackQueueActions from './callback-queue.actions';
 
@@ -10,8 +10,8 @@ import * as CallbackQueueActions from './callback-queue.actions';
 @Injectable()
 export class CallbackQueueEffects {
 
-  loadCallbackQueues$ = createEffect(() => {
-    return this.actions$.pipe( 
+  loadCallbackQueues$: Observable<any> & CreateEffectMetadata = createEffect(() => {
+    return this.actions$.pipe(
 
       ofType(CallbackQueueActions.loadCallbackQueues),
       concatMap(() =>
@@ -25,6 +25,6 @@ export class CallbackQueueEffects {
 
 
 
-  constructor(private actions$: Actions) {}
+  constructor (private actions$: Actions) { }
 
 }
