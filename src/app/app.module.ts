@@ -69,7 +69,8 @@ import { CallbackQueueEffects } from './portal/+state/callback-queue/callback-qu
     EffectsModule.forFeature([ CodeEditorEffects, CallStackEffects, WebApisEffects, CallbackQueueEffects ]),
     StoreModule.forFeature(fromCallStack.callStackFeatureKey, fromCallStack.reducer),
     StoreModule.forFeature(fromWebApis.webApisFeatureKey, fromWebApis.reducer),
-    StoreModule.forFeature(fromCallbackQueue.callbackQueueFeatureKey, fromCallbackQueue.reducer)
+    StoreModule.forFeature(fromCallbackQueue.callbackQueueFeatureKey, fromCallbackQueue.reducer),
+    StoreModule.forRoot({}, {})
   ],
   providers: [],
   bootstrap: [ AppComponent ]
