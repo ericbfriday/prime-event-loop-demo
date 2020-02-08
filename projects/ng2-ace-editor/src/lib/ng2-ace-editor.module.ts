@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Ng2AceEditorComponent } from './ng2-ace-editor.component';
+import { AceEditorComponent } from './component';
+import { AceEditorDirective } from './directive';
 
+const list = [
+  AceEditorComponent,
+  AceEditorDirective
+]
 
 
 @NgModule({
-  declarations: [Ng2AceEditorComponent],
-  imports: [
-  ],
-  exports: [Ng2AceEditorComponent]
+  declarations: [ ...list ],
+  imports: [],
+  exports: [ ...list ]
 })
 export class Ng2AceEditorModule { }
